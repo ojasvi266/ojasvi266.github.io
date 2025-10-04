@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+    This landing page was hand‑crafted for the Anushka’s Counseling and Psychotherapy
+    Center internship programme. It is a single HTML file that you can host for free
+    using GitHub Pages or any other static‑site host. Replace the placeholders
+    (PAYMENT_BUTTON_ID, PAYMENT_LINK_URL, GOOGLE_FORM_EMBED_URL) with your
+    actual values before publishing.
+  -->
+  <title>Anushka’s Counseling & Psychotherapy Internship</title>
+  <!-- Google Fonts: choose one modern, legible typeface -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Basic page styles -->
+  <style>
+    :root {
+      --primary-color: #0077b6;
+      --secondary-color: #f4f9fd;
+      --accent-color: #023e8a;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: var(--secondary-color);
+    }
+    header {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 1rem;
+    }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      margin-top: 0;
+      color: var(--accent-color);
+    }
+    .cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+    .cta button, .cta a.btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .cta button:hover, .cta a.btn:hover {
+      background-color: var(--accent-color);
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-height: 560px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    .video-container video {
+      width: 100%;
+      height: 100%;
+    }
+    .highlights, .modules, .schedule, .audience {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+    .highlights ul, .modules ul, .audience ul {
+      padding-left: 1rem;
+    }
+    .highlights li, .modules li, .audience li {
+      margin-bottom: 0.5rem;
+    }
+    .schedule table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .schedule th, .schedule td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .contact {
+      text-align: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+    .contact p {
+      margin: 0.5rem 0;
+    }
+    footer {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.875rem;
+    }
+    @media (min-width: 768px) {
+      .cta {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .cta .info {
+        flex: 2;
+      }
+      .cta .actions {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Psychology Internship Programme</h1>
+    <p>At Anushka’s Counseling & Psychotherapy Centre, Nagpur</p>
+  </header>
+  <main>
+    <!-- Hero / Call‑to‑action section -->
+    <section class="cta">
+      <div class="info">
+        <h2>Reserve your seat for just ₹500</h2>
+        <p>
+          Join our comprehensive counselling & psychotherapy internship and gain
+          hands‑on experience under expert guidance. Online sessions are held
+          every Saturday & Sunday (4:00 pm – 5:30 pm). Offline internships are
+          available with flexible timings at our centre in Nagpur. A
+          ₹500 registration fee secures your spot.
+        </p>
+        <p>
+          After paying, please complete the registration form so we can
+          confirm your place and send you onboarding details.
+        </p>
+      </div>
+      <div class="actions">
+        <!-- Razorpay Payment Button (replace PAYMENT_BUTTON_ID with your actual ID) -->
+        <form>
+          <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="PAYMENT_BUTTON_ID" async></script>
+        </form>
+        <!-- Fallback: if scripts are blocked, provide a direct payment link (replace PAYMENT_LINK_URL) -->
+        <a href="PAYMENT_LINK_URL" target="_blank" rel="noopener" class="btn">Pay Now (opens checkout)</a>
+      </div>
+    </section>
+
+    <!-- Intro video section -->
+    <section class="video-container">
+      <!-- Embed your MP4 video. Replace intro.mp4 with the path to your video in the repository -->
+      <video controls>
+        <source src="intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- Highlights section -->
+    <section class="highlights">
+      <h2>Programme Highlights</h2>
+      <ul>
+        <li>16 hours of live sessions (2 hours each Saturday & Sunday)</li>
+        <li>50 hours of assignments via carefully curated worksheets</li>
+        <li>15 days of structured assignments for practical application</li>
+        <li>6 months of support for handling clients</li>
+        <li>Lifelong membership in our interns community</li>
+        <li>Mentorship, feedback and guidance on future career opportunities</li>
+        <li>Blend of theory and practice through case studies, reflective activities & creative therapies</li>
+      </ul>
+    </section>
+
+    <!-- Programme schedule section -->
+    <section class="schedule">
+      <h2>Schedule & Key Dates</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date & Day</th>
+            <th>Topic / Activity</th>
+            <th>Time</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>24 Oct 2025 – Zero Day</td>
+            <td>Meet & Greet</td>
+            <td>4:00 pm – 5:30 pm</td>
+            <td>Informal networking and introductions</td>
+          </tr>
+          <tr>
+            <td>25 Oct 2025 – Day 1</td>
+            <td>Role of Counsellors</td>
+            <td>4:00 pm – 5:30 pm</td>
+            <td>Responsibilities, values and impact of counsellors</td>
+          </tr>
+          <tr>
+            <td>26 Oct 2025 – Day 2</td>
+            <td>Values & Ethics</td>
+            <td>4:00 pm – 5:30 pm</td>
+            <td>Ethical standards and core values in counselling</td>
+          </tr>
+          <!-- Add further dates as your detailed schedule requires -->
+        </tbody>
+      </table>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #555;">
+        Online sessions continue every Saturday & Sunday at 4:00 pm – 5:30 pm. Offline timings are flexible and can be arranged upon request.
+      </p>
+    </section>
+
+    <!-- Modules section -->
+    <section class="modules">
+      <h2>Modules Overview</h2>
+      <ul>
+        <li><strong>Module 1:</strong> Role of Counsellors – understand the various responsibilities and environments in which counsellors work.</li>
+        <li><strong>Module 2:</strong> Values & Ethics – learn about professional standards, empathy, respect and confidentiality; explore ethical dilemmas through role‑play.</li>
+        <li><strong>Module 3:</strong> Challenges for Beginner Counsellors – discuss common challenges, boundary management, self‑care and stress management strategies.</li>
+        <li><strong>Module 4:</strong> Active Listening & Observing Client Behaviour – practise paraphrasing, reflecting and analysing non‑verbal cues.</li>
+        <li><strong>Module 5:</strong> Rapport Building – master techniques for establishing trust, empathy and a therapeutic alliance.</li>
+        <li><strong>Module 6:</strong> Creative Therapies – explore art, music, movement and somatic therapies for holistic healing.</li>
+        <li><strong>Module 7:</strong> Integration of Spirituality & Psychotherapy – learn how to incorporate mindfulness, meditation and spiritual considerations ethically.</li>
+        <li><strong>Module 8:</strong> Supervision & Reflective Practice – develop self‑reflection skills and understand the importance of ongoing supervision.</li>
+        <li><strong>Module 9:</strong> Professional Development & Career Planning – build your professional identity, portfolio and network.</li>
+        <li><strong>Module 10:</strong> Evaluation & Closure – assess learning outcomes, receive feedback and plan the next steps in your career.</li>
+      </ul>
+    </section>
+
+    <!-- Target audience section -->
+    <section class="audience">
+      <h2>Who Is This Programme For?</h2>
+      <ul>
+        <li>Psychology students & recent graduates</li>
+        <li>Beginner counsellors and therapists</li>
+        <li>Social workers & mental health NGO staff</li>
+        <li>Energy healers & alternative therapy practitioners</li>
+        <li>Aspiring life coaches</li>
+        <li>Educators & academic professionals</li>
+        <li>Wellness & healthcare professionals</li>
+        <li>HR & talent development professionals</li>
+        <li>Psychology enthusiasts</li>
+      </ul>
+    </section>
+
+    <!-- Registration form -->
+    <section class="highlights">
+      <h2>Registration Form</h2>
+      <p>Please fill out the form below after completing your payment to confirm your spot. The form responses will be stored securely in our Google Sheet.</p>
+      <!-- Embed your Google Form here. Replace GOOGLE_FORM_EMBED_URL with your actual embed URL -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScdxRLfN14qR2H8iFNG-yYYoy_Rkq3EU0H0KBOOSkbbIUUO_Q/viewform?usp=header" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading…</iframe>
+    </section>
+
+    <!-- Brochure download -->
+    <section class="highlights">
+      <h2>Download the Brochure</h2>
+      <p>If you’d like to review all programme details offline, download our PDF brochure.</p>
+      <!-- Replace brochure.pdf with the filename of your brochure in the repository -->
+      <a href="brochure.pdf" download class="btn">Download Brochure (PDF)</a>
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <p>
+        Have questions? We’re happy to help! Message us on WhatsApp or call us
+        directly.
+      </p>
+      <!-- Replace YOUR_PHONE_NUMBER with your actual phone number (digits only) -->
+      <p><a href="https://chat.whatsapp.com/EjUoi8UwlkH9W1XEUnU8Ud?mode=ems_share_t" class="btn">join WhatsApp group</a></p>
+      <p>Phone: +91 99222 38509</p>
+      <p>Email: <a href="mailto:info@anushkascounselingandtherapy.com">info@anushkascounselingandtherapy.com</a></p>
+      <p>Address: 404, Padmavati Ashray, Plot No. U/2, Laxmi Nagar, Nagpur – 440022</p>
+    </section>
+  </main>
+  <footer>
+    © 2025 Anushka’s Counseling & Psychotherapy Centre. All rights reserved.
+  </footer>
+</body>
+</html>
