@@ -3,172 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!--
-    This landing page was hand‑crafted for the Anushka’s Counseling and Psychotherapy
-    Center internship programme. It is a single HTML file that you can host for free
-    using GitHub Pages or any other static‑site host. Replace the placeholders
-    (PAYMENT_BUTTON_ID, PAYMENT_LINK_URL, GOOGLE_FORM_EMBED_URL) with your
-    actual values before publishing.
-  -->
   <title>Anushka’s Counseling & Psychotherapy Internship</title>
-  <!-- Google Fonts: choose one modern, legible typeface -->
+
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- Basic page styles -->
+
   <style>
     :root {
-      --primary-color: #0077b6;
-      --secondary-color: #f4f9fd;
-      --accent-color: #023e8a;
+      --primary: #0077b6;
+      --secondary: #f4f9fd;
+      --accent: #023e8a;
+      --ink: #333;
     }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      color: #333;
-      background-color: var(--secondary-color);
+      color: var(--ink);
+      background: var(--secondary);
     }
     header {
-      background-color: var(--primary-color);
+      background: var(--primary);
       color: #fff;
       padding: 2rem 1rem;
       text-align: center;
     }
-    header h1 {
-      margin: 0 0 0.5rem;
-      font-size: 2rem;
-    }
-    header p {
-      margin: 0;
-      font-size: 1rem;
-    }
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-    h2 {
-      margin-top: 0;
-      color: var(--accent-color);
-    }
-    .cta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    header h1 { margin: 0 0 .5rem; font-size: 2rem; }
+    header p { margin: 0; font-size: 1rem; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+    section { margin-bottom: 3rem; }
+    h2 { margin-top: 0; color: var(--accent); }
+
+    .card {
       background: #fff;
       border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,.05);
     }
-    .cta button, .cta a.btn {
+
+    /* CTA */
+    .cta { display: grid; gap: 1rem; align-items: start; }
+    @media (min-width: 768px) {
+      .cta { grid-template-columns: 1.6fr 1fr; }
+    }
+    .btn {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
+      padding: .75rem 1.25rem;
       border-radius: 8px;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      background: var(--primary);
+      color: #fff; text-decoration: none; border: 0; cursor: pointer;
+      transition: background .2s;
     }
-    .cta button:hover, .cta a.btn:hover {
-      background-color: var(--accent-color);
-    }
-    .video-container {
+    .btn:hover { background: var(--accent); }
+
+    /* Responsive video WITHOUT cropping */
+    .video-wrapper {
       position: relative;
       width: 100%;
-      max-height: 560px;
-      overflow: hidden;
-      border-radius: 12px;
-      margin-top: 1rem;
-    }
-    .video-container video {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;      /* keeps shape on all screens */
+      background: #000;
       border-radius: 14px;
+      overflow: hidden;          /* just for rounded corners */
     }
-    .video-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 800px;   /* you can adjust this if needed */
-    margin: 0 auto;
-    aspect-ratio: 16 / 9; /* keeps it proportional */
-    background: #000;
-    border-radius: 14px;
-    overflow: hidden;
-  }
-
     .video-wrapper video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;       /* show whole video, no crop */
+      object-position: center;
       display: block;
     }
-    
-    .highlights, .modules, .schedule, .audience {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    }
-    .highlights ul, .modules ul, .audience ul {
-      padding-left: 1rem;
-    }
-    .highlights li, .modules li, .audience li {
-      margin-bottom: 0.5rem;
-    }
-    .schedule table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .schedule th, .schedule td {
-      padding: 0.5rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .contact {
-      text-align: center;
-      background: #fff;
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    }
-    .contact p {
-      margin: 0.5rem 0;
-    }
+
+    /* Tables & lists */
+    .schedule table { width: 100%; border-collapse: collapse; }
+    .schedule th, .schedule td { padding: .5rem; border-bottom: 1px solid #ddd; text-align: left; }
+    .list ul { padding-left: 1.1rem; margin: 0; }
+    .list li { margin: .45rem 0; }
+
     footer {
-      background: var(--primary-color);
+      background: var(--primary);
       color: #fff;
       text-align: center;
       padding: 1rem;
-      font-size: 0.875rem;
-    }
-    @media (min-width: 768px) {
-      .cta {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .cta .info {
-        flex: 2;
-      }
-      .cta .actions {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+      font-size: .9rem;
     }
   </style>
 </head>
@@ -177,116 +101,110 @@
     <h1>Psychology Internship Programme</h1>
     <p>At Anushka’s Counseling & Psychotherapy Centre, Nagpur</p>
   </header>
+
   <main>
-    <!-- Hero / Call‑to‑action section -->
-    <section class="cta">
-      <div class="info">
+    <!-- HERO / CTA -->
+    <section class="card cta">
+      <div>
         <h2>Reserve your seat for just ₹500</h2>
         <p>
-          Join our comprehensive counselling & psychotherapy internship and gain
-          hands‑on experience under expert guidance. Online sessions are held
-          every Saturday & Sunday (4:00 pm – 5:30 pm). Offline internships are
-          available with flexible timings at our centre in Nagpur. A
-          ₹500 registration fee secures your spot.
+          Join our counselling & psychotherapy internship and gain hands-on experience under expert guidance.
+          <strong>Online:</strong> every Saturday & Sunday, 4:00–5:30 pm. <strong>Offline:</strong> flexible timings at our Nagpur centre.
         </p>
-        <p>
-          After paying, please complete the registration form so we can
-          confirm your place and send you onboarding details.
-        </p>
+        <p>Pay the registration fee, then complete the form to confirm your place.</p>
       </div>
-      <div class="actions">
-        <!-- Razorpay Payment Button (replace PAYMENT_BUTTON_ID with your actual ID) -->
+      <div>
+        <!-- Razorpay Payment Button (replace PAYMENT_BUTTON_ID) -->
         <form>
-          <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="PAYMENT_BUTTON_ID" async></script>
+          <script src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id="PAYMENT_BUTTON_ID" async></script>
         </form>
-        <!-- Fallback: if scripts are blocked, provide a direct payment link (replace PAYMENT_LINK_URL) -->
-        <a href="PAYMENT_LINK_URL" target="_blank" rel="noopener" class="btn">Pay Now (opens checkout)</a>
+
+        <!-- Fallback direct link (replace PAYMENT_LINK_URL) -->
+        <p style="margin:.5rem 0 0">
+          <a class="btn" href="PAYMENT_LINK_URL" target="_blank" rel="noopener">Pay Now (opens checkout)</a>
+        </p>
       </div>
     </section>
 
-    <!-- Intro video section -->
-    <section class="video-container">
-      <!-- Embed your MP4 video. Replace intro.mp4 with the path to your video in the repository -->
+    <!-- INTRO VIDEO (no cropping) -->
+    <section class="card">
+      <h2>Quick Introduction</h2>
       <div class="video-wrapper">
-        <video controls playsinline poster="poster.jpg">
+        <!-- Replace intro.mp4 if your file has a different name -->
+        <video controls playsinline>
           <source src="intro.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
     </section>
 
-    <!-- Highlights section -->
-    <section class="highlights">
+    <!-- HIGHLIGHTS -->
+    <section class="card list">
       <h2>Programme Highlights</h2>
       <ul>
-        <li>16 hours of live sessions (2 hours each Saturday & Sunday)</li>
-        <li>50 hours of assignments via carefully curated worksheets</li>
-        <li>15 days of structured assignments for practical application</li>
-        <li>6 months of support for handling clients</li>
+        <li>16 hours of live sessions (2 hours each Saturday & Sunday)</li>
+        <li>50 hours of assignments via curated worksheets</li>
+        <li>15 days of structured assignments for practical application</li>
+        <li>6 months of support for handling clients</li>
         <li>Lifelong membership in our interns community</li>
-        <li>Mentorship, feedback and guidance on future career opportunities</li>
-        <li>Blend of theory and practice through case studies, reflective activities & creative therapies</li>
+        <li>Mentorship, feedback and career guidance</li>
+        <li>Blend of theory and practice: case studies, reflective activities & creative therapies</li>
       </ul>
     </section>
 
-    <!-- Programme schedule section -->
-    <section class="schedule">
+    <!-- SCHEDULE -->
+    <section class="card schedule">
       <h2>Schedule & Key Dates</h2>
       <table>
         <thead>
-          <tr>
-            <th>Date & Day</th>
-            <th>Topic / Activity</th>
-            <th>Time</th>
-            <th>Description</th>
-          </tr>
+          <tr><th>Date & Day</th><th>Topic / Activity</th><th>Time</th><th>Description</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>24 Oct 2025 – Zero Day</td>
+            <td>24 Oct 2025 – Zero Day</td>
             <td>Meet & Greet</td>
-            <td>4:00 pm – 5:30 pm</td>
+            <td>4:00–5:30 pm</td>
             <td>Informal networking and introductions</td>
           </tr>
           <tr>
-            <td>25 Oct 2025 – Day 1</td>
+            <td>25 Oct 2025 – Day 1</td>
             <td>Role of Counsellors</td>
-            <td>4:00 pm – 5:30 pm</td>
+            <td>4:00–5:30 pm</td>
             <td>Responsibilities, values and impact of counsellors</td>
           </tr>
           <tr>
-            <td>26 Oct 2025 – Day 2</td>
+            <td>26 Oct 2025 – Day 2</td>
             <td>Values & Ethics</td>
-            <td>4:00 pm – 5:30 pm</td>
+            <td>4:00–5:30 pm</td>
             <td>Ethical standards and core values in counselling</td>
           </tr>
-          <!-- Add further dates as your detailed schedule requires -->
         </tbody>
       </table>
-      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #555;">
-        Online sessions continue every Saturday & Sunday at 4:00 pm – 5:30 pm. Offline timings are flexible and can be arranged upon request.
+      <p style="margin:.5rem 0 0;color:#555;font-size:.95rem">
+        Online sessions continue every Saturday & Sunday at 4:00–5:30 pm. Offline timings are flexible on request.
       </p>
     </section>
 
-    <!-- Modules section -->
-    <section class="modules">
+    <!-- MODULES -->
+    <section class="card list">
       <h2>Modules Overview</h2>
       <ul>
-        <li><strong>Module 1:</strong> Role of Counsellors – understand the various responsibilities and environments in which counsellors work.</li>
-        <li><strong>Module 2:</strong> Values & Ethics – learn about professional standards, empathy, respect and confidentiality; explore ethical dilemmas through role‑play.</li>
-        <li><strong>Module 3:</strong> Challenges for Beginner Counsellors – discuss common challenges, boundary management, self‑care and stress management strategies.</li>
-        <li><strong>Module 4:</strong> Active Listening & Observing Client Behaviour – practise paraphrasing, reflecting and analysing non‑verbal cues.</li>
-        <li><strong>Module 5:</strong> Rapport Building – master techniques for establishing trust, empathy and a therapeutic alliance.</li>
-        <li><strong>Module 6:</strong> Creative Therapies – explore art, music, movement and somatic therapies for holistic healing.</li>
-        <li><strong>Module 7:</strong> Integration of Spirituality & Psychotherapy – learn how to incorporate mindfulness, meditation and spiritual considerations ethically.</li>
-        <li><strong>Module 8:</strong> Supervision & Reflective Practice – develop self‑reflection skills and understand the importance of ongoing supervision.</li>
-        <li><strong>Module 9:</strong> Professional Development & Career Planning – build your professional identity, portfolio and network.</li>
-        <li><strong>Module 10:</strong> Evaluation & Closure – assess learning outcomes, receive feedback and plan the next steps in your career.</li>
+        <li><strong>Module 1:</strong> Role of Counsellors</li>
+        <li><strong>Module 2:</strong> Values & Ethics</li>
+        <li><strong>Module 3:</strong> Challenges for Beginner Counsellors</li>
+        <li><strong>Module 4:</strong> Active Listening & Observing Client Behaviour</li>
+        <li><strong>Module 5:</strong> Rapport Building</li>
+        <li><strong>Module 6:</strong> Creative Therapies (art, music, movement, somatic)</li>
+        <li><strong>Module 7:</strong> Integration of Spirituality & Psychotherapy</li>
+        <li><strong>Module 8:</strong> Supervision & Reflective Practice</li>
+        <li><strong>Module 9:</strong> Professional Development & Career Planning</li>
+        <li><strong>Module 10:</strong> Evaluation & Closure</li>
       </ul>
     </section>
 
-    <!-- Target audience section -->
-    <section class="audience">
+    <!-- AUDIENCE -->
+    <section class="card list">
       <h2>Who Is This Programme For?</h2>
       <ul>
         <li>Psychology students & recent graduates</li>
@@ -301,38 +219,39 @@
       </ul>
     </section>
 
-    <!-- Registration form -->
-    <section class="highlights">
+    <!-- REGISTRATION FORM (proper embed) -->
+    <section class="card">
       <h2>Registration Form</h2>
-      <p>Please fill out the form below after completing your payment to confirm your spot. The form responses will be stored securely in our Google Sheet.</p>
-      <!-- Embed your Google Form here. Replace GOOGLE_FORM_EMBED_URL with your actual embed URL -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScdxRLfN14qR2H8iFNG-yYYoy_Rkq3EU0H0KBOOSkbbIUUO_Q/viewform?usp=header" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading…</iframe>
+      <p>Please fill out the form after completing your payment to confirm your spot.</p>
+      <!-- Replace the src with your form’s embed URL -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScdxRLfN14qR2H8iFNG-yYYoy_Rkq3EU0H0KBOOSkbbIUUO_Q/viewform?embedded=true"
+        width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">
+        Loading…
+      </iframe>
     </section>
 
-    <!-- Brochure download -->
-    <section class="highlights">
+    <!-- BROCHURE -->
+    <section class="card">
       <h2>Download the Brochure</h2>
       <p>If you’d like to review all programme details offline, download our PDF brochure.</p>
-      <!-- Replace brochure.pdf with the filename of your brochure in the repository -->
       <a href="brochure.pdf" download class="btn">Download Brochure (PDF)</a>
     </section>
 
-    <!-- Contact section -->
-    <section class="contact">
+    <!-- CONTACT -->
+    <section class="card" style="text-align:center">
       <h2>Contact Us</h2>
-      <p>
-        Have questions? We’re happy to help! Message us on WhatsApp or call us
-        directly.
-      </p>
-      <!-- Replace YOUR_PHONE_NUMBER with your actual phone number (digits only) -->
-      <p><a href="https://chat.whatsapp.com/EjUoi8UwlkH9W1XEUnU8Ud?mode=ems_share_t" class="btn">join WhatsApp group</a></p>
-      <p>Phone: +91 99222 38509</p>
+      <p>Have questions? We’re happy to help—message us on WhatsApp or call.</p>
+      <!-- Your group invite link -->
+      <p><a class="btn" href="https://chat.whatsapp.com/EjUoi8UwlkH9W1XEUnU8Ud?mode=ems_share_t" target="_blank" rel="noopener">Join WhatsApp Group</a></p>
+      <p>Phone: +91 99222 38509</p>
       <p>Email: <a href="mailto:info@anushkascounselingandtherapy.com">info@anushkascounselingandtherapy.com</a></p>
-      <p>Address: 404, Padmavati Ashray, Plot No. U/2, Laxmi Nagar, Nagpur – 440022</p>
+      <p>Address: 404, Padmavati Ashray, Plot No. U/2, Laxmi Nagar, Nagpur – 440022</p>
     </section>
   </main>
+
   <footer>
-    © 2025 Anushka’s Counseling & Psychotherapy Centre. All rights reserved.
+    © 2025 Anushka’s Counseling & Psychotherapy Centre. All rights reserved.
   </footer>
 </body>
 </html>
